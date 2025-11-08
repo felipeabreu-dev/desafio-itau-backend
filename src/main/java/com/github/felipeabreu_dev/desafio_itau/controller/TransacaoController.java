@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TransacaoController {
 
-    private TransacaoService transacaoService;
+    private final TransacaoService transacaoService;
 
     @PostMapping
-    public ResponseEntity<Void> salvarTransacao(@RequestBody TransacaoDTO dto) {
-
+    public ResponseEntity<Void> salvarTransacao(@RequestBody @Valid TransacaoDTO dto) {
+        transacaoService.salvarTransacao(dto);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
