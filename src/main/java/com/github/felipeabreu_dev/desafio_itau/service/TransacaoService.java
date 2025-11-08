@@ -7,6 +7,9 @@ import com.github.felipeabreu_dev.desafio_itau.repository.TransacaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.OffsetDateTime;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TransacaoService {
@@ -22,6 +25,13 @@ public class TransacaoService {
 
     public void deletarTransacoes() {
         transacaoRepository.deleteAll();
+    }
+
+    List<Transacao> transacoesNosUltimos60Segundos() {
+        return transacaoRepository.obterTransacoes()
+                .stream()
+                .filter(transacao -> transacao.getDataHora().isAfter(OffsetDateTime.now().minusSeconds(60)))
+                .toList();
     }
 
     void validar(Transacao transacao) {

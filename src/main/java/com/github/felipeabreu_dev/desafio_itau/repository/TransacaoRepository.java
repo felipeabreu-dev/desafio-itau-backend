@@ -1,14 +1,12 @@
 package com.github.felipeabreu_dev.desafio_itau.repository;
 
 import com.github.felipeabreu_dev.desafio_itau.model.Transacao;
-import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-@Getter
 public class TransacaoRepository {
 
     private List<Transacao> transacoes = new ArrayList<>();
@@ -20,6 +18,10 @@ public class TransacaoRepository {
 
     public void deleteAll() {
         this.transacoes.clear();
+    }
+
+    public List<Transacao> obterTransacoes() {
+        return this.transacoes;
     }
 
 }
