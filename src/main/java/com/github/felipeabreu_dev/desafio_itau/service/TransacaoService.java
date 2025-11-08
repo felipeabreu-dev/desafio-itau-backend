@@ -20,6 +20,10 @@ public class TransacaoService {
         transacaoRepository.salvar(transacao);
     }
 
+    public void deletarTransacoes() {
+        transacaoRepository.deleteAll();
+    }
+
     void validar(Transacao transacao) {
         if(valorTransacaoEMenorQueZero(transacao)) {
             throw new IllegalArgumentException();

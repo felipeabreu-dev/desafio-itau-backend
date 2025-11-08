@@ -18,4 +18,8 @@ public class TransacaoRepository {
         this.transacoes.add(transacao);
     }
 
+    public void deleteAll() {
+        this.transacoes.clear();
+    }
+
 }
